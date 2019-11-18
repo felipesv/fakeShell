@@ -7,7 +7,6 @@ int main()
 
 	do {
 		prompt = _prompt(isatty(STDIN_FILENO));
-
 		child_process = fork();
 
 		if (child_process == 0)
