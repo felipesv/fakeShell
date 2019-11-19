@@ -20,7 +20,7 @@
 int _putchar(char c);
 char* _prompt(int status_iss);
 void delete_newline(char **prompt);
-void _execve(char *arguments[]);
+void _execve(char *prompt);
 int _strcmp(char *s1, char *s2);
 int countSpace(char *prompt);
 

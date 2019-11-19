@@ -11,6 +11,12 @@ char *_prompt(int status_iss)
 			_putchar('$');
 		len = getline(&get_promtp, &size_buffer, stdin);
 
+		if (len == EOF)
+		{
+			_putchar('\n');
+			exit(0);
+		}
+
 		if (len == -1)
 			perror("./hsh");
 
