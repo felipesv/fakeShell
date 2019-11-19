@@ -6,14 +6,13 @@ int main(int argc, char *argv[], char *env[])
 	pid_t child_process;
 	int *status_fork = NULL;
 	(void)argc;
-	(void)env;
 
 	do {
 		prompt = _prompt(isatty(STDIN_FILENO), argv[0]);
 		child_process = fork();
 
 		if (child_process == 0)
-			_execve(prompt, argv[0]);
+			_execve(prompt, argv[0], env);
 
 		if (child_process > 0)
 		{
