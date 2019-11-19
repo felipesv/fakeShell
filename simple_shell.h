@@ -18,9 +18,9 @@
 
 /* FUNCTIONS */
 int _putchar(char c);
-char* _prompt(int status_iss);
+char *_prompt(int status_iss, char *fileName);
 void delete_newline(char **prompt);
-void _execve(char *prompt);
+void _execve(char *prompt, char *fileName);
 int _strcmp(char *s1, char *s2);
 int countSpace(char *prompt);
 

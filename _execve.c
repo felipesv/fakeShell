@@ -1,6 +1,6 @@
 #include "simple_shell.h"
 
-void _execve(char *prompt)
+void _execve(char *prompt, char *fileName)
 {
 	char *arguments, **argum;
 	int cnt = 0, sizeArgum;
@@ -9,7 +9,7 @@ void _execve(char *prompt)
         argum = malloc(sizeof(char*) * ++sizeArgum);
 
 	if (argum == NULL)
-                perror("./hsh");
+                perror(fileName);
 
 	arguments = strtok(prompt, " \t\n\r");
 
@@ -22,7 +22,7 @@ void _execve(char *prompt)
 
 	if(execve(argum[0], argum, NULL) == -1)
 	{
-		perror("Error");
+		perror(fileName);
 	}
 
 	free(argum);

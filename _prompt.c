@@ -1,6 +1,6 @@
 #include "simple_shell.h"
 
-char *_prompt(int status_iss)
+char *_prompt(int status_iss, char *fileName)
 {
 	char *get_promtp;
 	int len;
@@ -18,7 +18,7 @@ char *_prompt(int status_iss)
 		}
 
 		if (len == -1)
-			perror("./hsh");
+			perror(fileName);
 
 	} while (len == 1 || len == 0);
 
