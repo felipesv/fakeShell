@@ -23,7 +23,7 @@ void _execve(char *prompt, char *fileName, char **env)
 
 	if (stat(argum[0], &stat_var) == 0)
 	{
-		if(execve(argum[0], argum, NULL) == -1)
+		if(execve(argum[0], argum, env) == -1)
 			perror(fileName);
 	}
 	else
@@ -31,7 +31,7 @@ void _execve(char *prompt, char *fileName, char **env)
 		path_val = get_env_value("PATH", env);
 		pathEnv = env_split(path_val, argum[0], fileName);
 
-		if(execve(pathEnv, argum, NULL) == -1)
+		if(execve(pathEnv, argum, env) == -1)
 			perror(fileName);
 	}
 

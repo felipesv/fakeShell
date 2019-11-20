@@ -12,6 +12,8 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include<sys/wait.h>
+#include <signal.h>
+
 
 /* MACROS */
 #define ARGUM_SIZE 1
@@ -28,6 +30,9 @@ int lengthArray(char *array);
 char *_strcat(char *dest, char *src);
 char *get_env_value(char *nameVar, char **env);
 char *env_split(char *path_value, char *command, char *fileName);
+void exitValidation(char *prompt);
+void ctrlcValidate();
+void newPrompt(int _signal);
 
 
 #endif /* SIMPLE_SHELL_H */

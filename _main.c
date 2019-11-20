@@ -7,6 +7,8 @@ int main(int argc, char *argv[], char *env[])
 	int *status_fork = NULL;
 	(void)argc;
 
+	ctrlcValidate();
+
 	do {
 		prompt = _prompt(isatty(STDIN_FILENO), argv[0]);
 		child_process = fork();

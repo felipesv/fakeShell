@@ -10,6 +10,7 @@ char *_prompt(int status_iss, char *fileName)
 		if (status_iss)
 			_putchar('$');
 		len = getline(&get_promtp, &size_buffer, stdin);
+		exitValidation(get_promtp);
 
 		if (len == EOF)
 		{
@@ -37,4 +38,12 @@ int countSpace(char *prompt)
 	}
 
 	return (size);
+}
+
+void exitValidation(char *prompt)
+{
+	char *_exit = "exit\n";
+
+	if (_strcmp(_exit, prompt) == 0)
+		exit(0);
 }
