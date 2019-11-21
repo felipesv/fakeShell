@@ -20,7 +20,8 @@ void _execve(char *prompt, char *fileName, char **env)
                 arguments = strtok(NULL, " \t\n\r");
 	}
 	argum[cnt] = NULL;
-
+	
+	checkHelp(argum[0],  argum[1]);
 	if (stat(argum[0], &stat_var) == 0)
 	{
 		if(execve(argum[0], argum, env) == -1)
@@ -92,4 +93,16 @@ char *env_split(char *path_value, char *command, char *fileName)
 	}
 
 	return (NULL);
+}
+
+void checkHelp(char *command, char *arg)
+{
+	if(_strcmp(command, "help") == 0)
+	{
+		if (_strcmp(arg, "cd") == 0)
+		{
+			  read_textfile("help_cd",1576);
+			  exit(0);
+		}
+	}
 }

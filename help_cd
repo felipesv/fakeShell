@@ -12,6 +12,7 @@ cd: cd [-L|[-P [-e]] [-@]] [dir]
     If the directory is not found, and the shell option `cdable_vars' is set,
     the word is assumed to be  a variable name.  If that variable has a value,
     its value is used for DIR.
+
     Options:
         -L      force symbolic links to be followed: resolve symbolic links in
         DIR after processing instances of `..'
@@ -21,7 +22,7 @@ cd: cd [-L|[-P [-e]] [-@]] [dir]
         -e      if the -P option is supplied, and the current working directory
         cannot be determined successfully, exit with a non-zero status
         -@  on systems that support it, present a file with extended attributes
-        as a directory containing the file attributes
+            as a directory containing the file attributes
 
     The default is to follow symbolic links, as if `-L' were specified.
     `..' is processed by removing the immediately previous pathname component

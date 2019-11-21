@@ -1,3 +1,4 @@
+#include "simple_shell.h"
 
 /**
 * read_textfile - read file
