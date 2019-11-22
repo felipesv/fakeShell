@@ -74,15 +74,10 @@ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 **Test 1:**
 
 $ ./hsh
-
 ($) /bin/ls
-
 hsh main.c shell.c
-
 ($)
-
 ($) exit
-
 $
 
 **Test 2:**
