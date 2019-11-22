@@ -1,5 +1,11 @@
 #include "simple_shell.h"
-
+/**
+ * _prompt - get the input value
+ * @status_iss: issaty value
+ * @fileName: executable file name
+ *
+ * Return: pointer to the prompt value
+ */
 char *_prompt(int status_iss, char *fileName)
 {
 	char *get_promtp;
@@ -25,7 +31,12 @@ char *_prompt(int status_iss, char *fileName)
 
 	return (get_promtp);
 }
-
+/**
+ * countSpace - count the arguments
+ * @prompt: prompt value
+ *
+ * Return: spaces counted
+ */
 int countSpace(char *prompt)
 {
 	int cnt = 0, size = 1;
@@ -39,7 +50,12 @@ int countSpace(char *prompt)
 
 	return (size);
 }
-
+/**
+ * exitValidation - check if the command is exit
+ * @prompt: prompt value
+ *
+ * Return: is a void
+ */
 void exitValidation(char *prompt)
 {
 	char *_exit = "exit\n";

@@ -1,5 +1,12 @@
 #include "simple_shell.h"
-
+/**
+ * main - main function for the shell
+ * @argc: number of arguments
+ * @argv: arguments
+ * @env: enviroments variables
+ *
+ * Return: 0 success.
+ */
 int main(int argc, char *argv[], char *env[])
 {
 	char *prompt;
@@ -21,7 +28,7 @@ int main(int argc, char *argv[], char *env[])
 			wait(status_fork);
 
 			if (isatty(STDIN_FILENO) == 0)
-				return(0);
+				return (0);
 		}
 
 	} while (1);

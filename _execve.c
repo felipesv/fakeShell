@@ -1,5 +1,12 @@
 #include "simple_shell.h"
-
+/**
+ * _execve - execute all the commands
+ * @prompt: the command to execute
+ * @fileName: executable file name
+ * @env: enviroment variables
+ *
+ * Return: is a void
+ */
 void _execve(char *prompt, char *fileName, char **env)
 {
 	char *arguments, **argum, *path_val, *pathEnv;
@@ -7,24 +14,24 @@ void _execve(char *prompt, char *fileName, char **env)
 	struct stat stat_var;
 
 	sizeArgum = countSpace(prompt);
-        argum = malloc(sizeof(char*) * ++sizeArgum);
+	argum = malloc(sizeof(char *) * ++sizeArgum);
 
 	if (argum == NULL)
-                perror(fileName);
+		perror(fileName);
 
 	arguments = strtok(prompt, " \t\n\r");
 
-	while(arguments != NULL)
+	while (arguments != NULL)
 	{
-                argum[cnt++] = arguments;
-                arguments = strtok(NULL, " \t\n\r");
+		argum[cnt++] = arguments;
+		arguments = strtok(NULL, " \t\n\r");
 	}
 	argum[cnt] = NULL;
-	
+
 	checkHelp(argum[0],  argum[1]);
 	if (stat(argum[0], &stat_var) == 0)
 	{
-		if(execve(argum[0], argum, env) == -1)
+		if (execve(argum[0], argum, env) == -1)
 			perror(fileName);
 	}
 	else
@@ -32,15 +39,21 @@ void _execve(char *prompt, char *fileName, char **env)
 		path_val = get_env_value("PATH", env);
 		pathEnv = env_split(path_val, argum[0], fileName);
 
-		if(execve(pathEnv, argum, env) == -1)
+		if (execve(pathEnv, argum, env) == -1)
 			perror(fileName);
 	}
 
 	free(argum);
 
-	exit (0);
+	exit(0);
 }
-
+/**
+ * get_env_value - get the enviroment var value
+ * @nameVar: name var
+ * @env: enviroment variables
+ *
+ * Return: pointer to the value
+ */
 char *get_env_value(char *nameVar, char **env)
 {
 	int cnt = 0;
@@ -53,7 +66,7 @@ char *get_env_value(char *nameVar, char **env)
 		if (_strcmp(arguments, nameVar) == 0)
 		{
 			arguments = strtok(NULL, "\n");
-			return(arguments);
+			return (arguments);
 		}
 
 		cnt++;
@@ -62,7 +75,14 @@ char *get_env_value(char *nameVar, char **env)
 
 	return (NULL);
 }
-
+/**
+ * env_split - split the value of the enviroment var
+ * @path_value: pointer to the value
+ * @command: command to concat
+ * @fileName: executable file name
+ *
+ * Return: the complete path
+ */
 char *env_split(char *path_value, char *command, char *fileName)
 {
 	int lenCommand = 0, lenPath = 0, _mallocsize;
@@ -94,14 +114,20 @@ char *env_split(char *path_value, char *command, char *fileName)
 
 	return (NULL);
 }
-
+/**
+ * checkHelp - check is a help command
+ * @command: command to validate
+ * @arg: command's arguments
+ *
+ * Return: cnt.
+ */
 void checkHelp(char *command, char *arg)
 {
-	if(_strcmp(command, "help") == 0)
+	if (_strcmp(command, "help") == 0)
 	{
-		if (_strcmp(arg, "cd") == 0)
+		if (_strcmp("cd", arg) == 0)
 		{
-			  read_textfile("help_cd",1576);
+			  read_textfile("help_cd", 1576);
 			  exit(0);
 		}
 	}

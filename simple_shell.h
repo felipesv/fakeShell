@@ -31,7 +31,7 @@ char *_strcat(char *dest, char *src);
 char *get_env_value(char *nameVar, char **env);
 char *env_split(char *path_value, char *command, char *fileName);
 void exitValidation(char *prompt);
-void ctrlcValidate();
+void ctrlcValidate(void);
 void newPrompt(int _signal);
 
 ssize_t read_textfile(const char *filename, size_t letters);
