@@ -73,31 +73,31 @@ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 
 **Test 1:**
 
-$ ./hsh
-($) /bin/ls
-hsh main.c shell.c
-($)
-($) exit
-$
+- $ ./hsh
+- ($) /bin/ls
+- hsh main.c shell.c
+- ($)
+- ($) exit
+- $
 
 **Test 2:**
 
-$ echo "/bin/ls" | ./hsh
-hsh main.c shell.c test_ls_2
-$
-$ cat test_ls_2
-/bin/ls
-/bin/ls
-$
-$ cat test_ls_2 | ./hsh
-hsh main.c shell.c test_ls_2
-hsh main.c shell.c test_ls_2
-$
+- $ echo "/bin/ls" | ./hsh
+- hsh main.c shell.c test_ls_2
+- $
+- $ cat test_ls_2
+- /bin/ls
+- /bin/ls
+- $
+- $ cat test_ls_2 | ./hsh
+- hsh main.c shell.c test_ls_2
+- hsh main.c shell.c test_ls_2
+- $
 
 ## Authors
 
- - [Carlos Cortez]([[https://github.com/kael1706](https://github.com/kael1706)] "GitHub Carlos Cortez")
- - [Felipe Satizabal]([https://github.com/felipesv](https://github.com/felipesv) "GitHub Felipe Satizabal")
+ - [CARLOS CORTEZ]([https://github.com/kael1706)
+ - [FELIPE SATIZABAL](https://github.com/felipesv)
 
 ## License
 
