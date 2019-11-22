@@ -96,7 +96,7 @@ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 
 ## Authors
 
- - [CARLOS CORTEZ]([https://github.com/kael1706)
+ - [CARLOS CORTEZ](https://github.com/kael1706)
  - [FELIPE SATIZABAL](https://github.com/felipesv)
 
 ## License
