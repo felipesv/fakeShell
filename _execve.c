@@ -27,8 +27,8 @@ void _execve(char *prompt, char *fileName, char **env)
 		arguments = strtok(NULL, " \t\n\r");
 	}
 	argum[cnt] = NULL;
-
 	checkHelp(argum[0],  argum[1]);
+	checkCd(argum[0], argum[1]);
 	if (stat(argum[0], &stat_var) == 0)
 	{
 		if (execve(argum[0], argum, env) == -1)
@@ -114,12 +114,12 @@ char *env_split(char *path_value, char *command, char *fileName)
 
 	return (NULL);
 }
+
 /**
- * checkHelp - check is a help command
+ * checkHelp - check if is a help command
  * @command: command to validate
  * @arg: command's arguments
  *
- * Return: cnt.
  */
 void checkHelp(char *command, char *arg)
 {
@@ -127,8 +127,45 @@ void checkHelp(char *command, char *arg)
 	{
 		if (_strcmp("cd", arg) == 0)
 		{
-			  read_textfile("help_cd", 1576);
-			  exit(0);
+			read_textfile("help_cd", 1576);
 		}
+		else if (_strcmp(arg, "exit") == 0)
+		{
+			read_textfile("help_exit", 152);
+		}
+		else if (_strcmp(arg, "alias") == 0)
+		{
+			read_textfile("help_alias", 567);
+		}
+		else if ((_strcmp(arg, "help") == 0))
+		{
+			read_textfile("help_help", 643);
+		}
+		exit(0);
+	}
+}
+
+/**
+ *checkCd - chek if is a cd command
+ *@command: command to validate
+ *@arg: command's argument
+ *
+ */
+void checkCd(char *command, char *arg)
+{
+	char tst[100];
+
+	if (_strcmp(command, "cd") == 0)
+	{
+		if (arg != NULL)
+		{
+			printf("%s\n", getcwd(tst, 100));
+			if (chdir(arg) != 0)
+			{
+				perror(command);
+			}
+			printf("%s\n", getcwd(tst, 100));
+		}
+		exit(0);
 	}
 }

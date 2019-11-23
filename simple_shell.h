@@ -36,5 +36,5 @@ void newPrompt(int _signal);
 
 ssize_t read_textfile(const char *filename, size_t letters);
 void checkHelp(char *command, char *arg);
-
+void checkCd(char *command, char *arg);
 #endif /* SIMPLE_SHELL_H */
