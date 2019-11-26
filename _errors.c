@@ -39,7 +39,7 @@ void showError(char **arg, char *fileName)
 	lenErr = lengthArray(msj);
 
 	write(STDERR_FILENO, msj, lenErr);
-	exit(0);
+	exit(127);
 }
 /**
  * countArguments - count the arguments send

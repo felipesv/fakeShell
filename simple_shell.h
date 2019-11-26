@@ -34,6 +34,8 @@ char *env_split(char *path_value, char *command, char *fileName);
 void exitValidation(char *prompt);
 void ctrlcValidate(void);
 void newPrompt(int _signal);
+char **copyEnv(char **env);
+void freeDoubleArray(char **arg);
 
 ssize_t read_textfile(const char *filename, size_t letters);
 void checkHelp(char *command, char *arg);

@@ -57,9 +57,9 @@ void _execve(char *prompt, char *fileName, char **env)
 char *get_env_value(char *nameVar, char **env)
 {
 	int cnt = 0;
-	char *arguments;
+	char *arguments, **cpyEnv = copyEnv(env);
 
-	arguments = strtok(env[cnt], "=");
+	arguments = strtok(cpyEnv[cnt], "=");
 
 	while (env[cnt])
 	{
@@ -70,7 +70,7 @@ char *get_env_value(char *nameVar, char **env)
 		}
 
 		cnt++;
-		arguments = strtok(env[cnt], "=");
+		arguments = strtok(cpyEnv[cnt], "=");
 	}
 
 	return (NULL);
