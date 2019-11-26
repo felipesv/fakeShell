@@ -16,7 +16,7 @@
 
 
 /* MACROS */
-#define ARGUM_SIZE 1
+#define MSJ_SIZE 1
 
 /* FUNCTIONS */
 int _putchar(char c);
@@ -24,6 +24,7 @@ char *_prompt(int status_iss, char *fileName);
 void delete_newline(char **prompt);
 void _execve(char *prompt, char *fileName, char **env);
 int _strcmp(char *s1, char *s2);
+char *_strcpy(char *dest, char *src);
 int countSpace(char *prompt);
 char *get_env_value(char *nameVar, char **env);
 int lengthArray(char *array);
@@ -37,4 +38,7 @@ void newPrompt(int _signal);
 ssize_t read_textfile(const char *filename, size_t letters);
 void checkHelp(char *command, char *arg);
 void checkCd(char *command, char *arg);
+
+void showError(char **arg, char *fileName);
+int countArguments(char **arg);
 #endif /* SIMPLE_SHELL_H */

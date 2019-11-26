@@ -32,7 +32,7 @@ void _execve(char *prompt, char *fileName, char **env)
 	if (stat(argum[0], &stat_var) == 0)
 	{
 		if (execve(argum[0], argum, env) == -1)
-			perror(fileName);
+			showError(argum, fileName);
 	}
 	else
 	{
@@ -40,7 +40,7 @@ void _execve(char *prompt, char *fileName, char **env)
 		pathEnv = env_split(path_val, argum[0], fileName);
 
 		if (execve(pathEnv, argum, env) == -1)
-			perror(fileName);
+			showError(argum, fileName);
 	}
 
 	free(argum);
@@ -99,9 +99,9 @@ char *env_split(char *path_value, char *command, char *fileName)
 		if (pathDir == NULL)
 			perror(fileName);
 
-		strcat(pathDir, valuePath);
-		strcat(pathDir, "/");
-		strcat(pathDir, command);
+		_strcat(pathDir, valuePath);
+		_strcat(pathDir, "/");
+		_strcat(pathDir, command);
 		*(pathDir + _mallocsize) = '\0';
 
 		if (stat(pathDir, &stat_var) == 0)
