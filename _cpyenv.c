@@ -1,5 +1,10 @@
 #include "simple_shell.h"
-
+/**
+ * copyEnv - create a copy from env
+ * @env: enviroments variables
+ *
+ * Return: return **pointer
+ */
 char **copyEnv(char **env)
 {
 	int cntArg = countArguments(env);
@@ -17,7 +22,7 @@ char **copyEnv(char **env)
 		if (cpyEnv[cnt] == NULL)
 		{
 			cnt--;
-			while(cnt >= 0)
+			while (cnt >= 0)
 			{
 				free(cpyEnv[cnt]);
 			}
@@ -32,10 +37,16 @@ char **copyEnv(char **env)
 
 	return (cpyEnv);
 }
-
+/**
+ * freeDoubleArray - free a **pointer
+ * @arg: pointer to free
+ *
+ * Return: is a void
+ */
 void freeDoubleArray(char **arg)
 {
 	int cnt = countArguments(arg);
+
 	cnt--;
 
 	while (cnt >= 0)
