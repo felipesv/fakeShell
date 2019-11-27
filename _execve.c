@@ -9,24 +9,15 @@
  */
 void _execve(char *prompt, char *fileName, char **env)
 {
-	char **argum, *path_val, *pathEnv;
-	struct stat stat_var;
+	char **argum;
 
 	argum = _sortArguments(prompt, fileName);
 
 	checkHelp(argum[0],  argum[1]);
 
-	if (stat(argum[0], &stat_var) == 0)
+	if (_strcmp(argum[0], "cd") != 0)
 	{
-		if (execve(argum[0], argum, env) == -1)
-			showError(argum, fileName);
-	}
-	else if (_strcmp(argum[0], "cd") != 0)
-	{
-		path_val = get_env_value("PATH", env);
-		pathEnv = env_split(path_val, argum[0], fileName);
-
-		if (execve(pathEnv, argum, env) == -1)
+		if (execve(buildPath(argum, fileName, env), argum, env) == -1)
 			showError(argum, fileName);
 	}
 

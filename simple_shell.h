@@ -45,4 +45,6 @@ char **_sortArguments(char *prompt, char *fileName);
 void _execve2(char *prompt, char *fileName);
 void showError(char **arg, char *fileName);
 int countArguments(char **arg);
+char *buildPath(char **argum, char *nameFile, char **env);
+
 #endif /* SIMPLE_SHELL_H */
