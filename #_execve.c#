@@ -1,4 +1,31 @@
 #include "simple_shell.h"
+
+void _execve2(char *prompt, char *fileName)
+{
+	char **argum;
+	argum = _sortArguments(prompt, fileName);
+	checkCd(argum[0], argum[1]);
+}
+
+char **_sortArguments(char *prompt, char *fileName)
+{
+	char *arguments, **argum;
+	int cnt = 0, sizeArgum;
+
+	sizeArgum = countSpace(prompt);
+	argum = malloc(sizeof(char *) * ++sizeArgum);
+	if (argum == NULL)
+		perror(fileName);
+	arguments = strtok(prompt, " \t\n\r");
+	while (arguments != NULL)
+	{
+		argum[cnt++] = arguments;
+		arguments = strtok(NULL, " \t\n\r");
+	}
+	argum[cnt] = NULL;
+	return (argum);
+}
+
 /**
  * _execve - execute all the commands
  * @prompt: the command to execute
@@ -108,7 +135,7 @@ char *env_split(char *path_value, char *command, char *fileName)
  * @arg: command's arguments
  *
  */
-void checkHelp (char *command, char *arg)
+void checkHelp(char *command, char *arg)
 {
 	if (_strcmp(command, "help") == 0)
 	{
