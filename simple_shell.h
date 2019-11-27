@@ -40,7 +40,8 @@ void freeDoubleArray(char **arg);
 ssize_t read_textfile(const char *filename, size_t letters);
 void checkHelp(char *command, char *arg);
 void checkCd(char *command, char *arg);
-
+char **_sortArguments(char *prompt, char *fileName);
+void _execve2(char *prompt, char *fileName);
 void showError(char **arg, char *fileName);
 int countArguments(char **arg);
 #endif /* SIMPLE_SHELL_H */

@@ -26,6 +26,7 @@ int main(int argc, char *argv[], char *env[])
 		if (child_process > 0)
 		{
 			wait(status_fork);
+			_execve2(prompt, argv[0]);
 
 			if (isatty(STDIN_FILENO) == 0)
 				return (0);

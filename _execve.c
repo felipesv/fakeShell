@@ -1,4 +1,31 @@
 #include "simple_shell.h"
+
+void _execve2(char *prompt, char *fileName)
+{
+	char **argum;
+	argum = _sortArguments(prompt, fileName);
+	checkCd(argum[0], argum[1]);
+}
+
+char **_sortArguments(char *prompt, char *fileName)
+{
+	char *arguments, **argum;
+	int cnt = 0, sizeArgum;
+
+	sizeArgum = countSpace(prompt);
+	argum = malloc(sizeof(char *) * ++sizeArgum);
+	if (argum == NULL)
+		perror(fileName);
+	arguments = strtok(prompt, " \t\n\r");
+	while (arguments != NULL)
+	{
+		argum[cnt++] = arguments;
+		arguments = strtok(NULL, " \t\n\r");
+	}
+	argum[cnt] = NULL;
+	return (argum);
+}
+
 /**
  * _execve - execute all the commands
  * @prompt: the command to execute
@@ -9,32 +36,19 @@
  */
 void _execve(char *prompt, char *fileName, char **env)
 {
-	char *arguments, **argum, *path_val, *pathEnv;
-	int cnt = 0, sizeArgum;
+	char **argum, *path_val, *pathEnv;
 	struct stat stat_var;
+	
+	argum = _sortArguments(prompt, fileName);
 
-	sizeArgum = countSpace(prompt);
-	argum = malloc(sizeof(char *) * ++sizeArgum);
-
-	if (argum == NULL)
-		perror(fileName);
-
-	arguments = strtok(prompt, " \t\n\r");
-
-	while (arguments != NULL)
-	{
-		argum[cnt++] = arguments;
-		arguments = strtok(NULL, " \t\n\r");
-	}
-	argum[cnt] = NULL;
 	checkHelp(argum[0],  argum[1]);
-	checkCd(argum[0], argum[1]);
+
 	if (stat(argum[0], &stat_var) == 0)
 	{
 		if (execve(argum[0], argum, env) == -1)
 			showError(argum, fileName);
 	}
-	else
+	else if (_strcmp(argum[0], "cd") != 0)
 	{
 		path_val = get_env_value("PATH", env);
 		pathEnv = env_split(path_val, argum[0], fileName);
@@ -153,19 +167,14 @@ void checkHelp(char *command, char *arg)
  */
 void checkCd(char *command, char *arg)
 {
-	char tst[100];
-
 	if (_strcmp(command, "cd") == 0)
 	{
 		if (arg != NULL)
 		{
-			printf("%s\n", getcwd(tst, 100));
 			if (chdir(arg) != 0)
 			{
 				perror(command);
 			}
-			printf("%s\n", getcwd(tst, 100));
 		}
-		exit(0);
 	}
 }
