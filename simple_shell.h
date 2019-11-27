@@ -36,6 +36,7 @@ void ctrlcValidate(void);
 void newPrompt(int _signal);
 char **copyEnv(char **env);
 void freeDoubleArray(char **arg);
+int _print_numbers_recursion(int number);
 
 ssize_t read_textfile(const char *filename, size_t letters);
 void checkHelp(char *command, char *arg);

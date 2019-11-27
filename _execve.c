@@ -108,7 +108,7 @@ char *env_split(char *path_value, char *command, char *fileName)
  * @arg: command's arguments
  *
  */
-void checkHelp (char *command, char *arg)
+void checkHelp(char *command, char *arg)
 {
 	if (_strcmp(command, "help") == 0)
 	{

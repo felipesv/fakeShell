@@ -38,3 +38,55 @@ char **_sortArguments(char *prompt, char *fileName)
 	argum[cnt] = NULL;
 	return (argum);
 }
+/**
+ * _printf_numbers_recursion - Funtion value number.
+ * @number: Value int.
+ *
+ * Return: cnt.
+ */
+int _printf_numbers_recursion(unsigned int number)
+{
+	unsigned int new_number = number / 10;
+	unsigned int prt_number = number % 10;
+	unsigned int cnt = 0;
+
+	if (new_number != 0)
+	{
+		cnt += _printf_numbers_recursion(new_number);
+		cnt++;
+		_putchar('0' + prt_number);
+	}
+	else
+	{
+		cnt++;
+		_putchar('0' + number);
+	}
+
+	return (cnt);
+}
+/**
+ * _printf_numbers_recursion - Funtion value number.
+ * @number: Value int.
+ *
+ * Return: cnt.
+ */
+int _print_numbers_recursion(int number)
+{
+	int new_number = number / 10;
+	int prt_number = number % 10;
+	int cnt = 0;
+
+	if (new_number != 0)
+	{
+		cnt += _print_numbers_recursion(new_number);
+		cnt++;
+		_putchar('0' + prt_number);
+	}
+	else
+	{
+		cnt++;
+		_putchar('0' + number);
+	}
+
+	return (cnt);
+}
